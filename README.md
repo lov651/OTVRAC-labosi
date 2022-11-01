@@ -1,7 +1,7 @@
 # OTVRAC-labosi
 Repozitorij za sve labose iz predmeta Otvoreno računarstvo na FER-u
 
-### Opis podataka
+## Opis podataka
 ***
 Skup podataka koji je korišten u ovoj laboratorijskoj vježbi i koji će se koristiti u daljnjim labosima sadrži informacije o različitim tv serijama\.
 Baza podataka Serije se sastoji od 3 tablice koje predstavljaju podatke o serijama, glumcima i vezema između njih\.
@@ -19,7 +19,7 @@ Lovro Katić
 ### Jezik \(podataka\)
 Engleski
 
-### Atributi
+## Atributi
 Podaci sadrže dvije skupine atributa:
 1. Atributi serije \- ime, zanr, trajanje, datum izlaska, godina zavrsetka, ocjena, status, broj sezona, broj epizoda, jezik, glumci
 2. Atributi glumaca \- ime, prezime
@@ -42,5 +42,8 @@ Podaci sadrže dvije skupine atributa:
 #### Atributi glumaca
 - ime \- ime glumca
 - prezime \- prezime glumca
+
+### Dodatni info
+Imena atributa podataka su na hrvatskom jeziku, iako su vrijednosti podataka na engleskom. Razlog tomu je što se za opis samog repozitorija također koristi hrvatski
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
