@@ -1,9 +1,7 @@
 # OTVRAC-labosi
-Repozitorij za sve labose iz predmeta Otvoreno računarstvo na FER-u
-    
-    
-   
-
+Repozitorij za sve labose iz predmeta Otvoreno računarstvo na FER-u  
+<br>
+<br>
 ## Opis podataka
 Skup podataka koji je korišten u ovoj laboratorijskoj vježbi i koji će se koristiti u daljnjim labosima sadrži informacije o različitim tv serijama\.
 Baza podataka Serije se sastoji od 3 tablice koje predstavljaju podatke o serijama, glumcima i vezema između njih\.
@@ -12,18 +10,14 @@ Te tablice su:
 2. glumac_serija \- tablica koja pomaže u ostavernju roditelj-dijete veze između serija i glumaca koji glume u njima
 3. glumac \- sadrži imena i prezimena glumaca
 
-
 ### Autor
 Lovro Katić
-
 
 ### Verzija skupa podataka
 1\.0
 
-
 ### Jezik \(podataka\)
 Engleski
-
 
 ## Atributi
 Podaci sadrže dvije skupine atributa:
