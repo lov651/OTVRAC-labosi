@@ -1,5 +1,8 @@
 # OTVRAC-labosi
 Repozitorij za sve labose iz predmeta Otvoreno računarstvo na FER-u
+    
+    
+   
 
 ## Opis podataka
 Skup podataka koji je korišten u ovoj laboratorijskoj vježbi i koji će se koristiti u daljnjim labosima sadrži informacije o različitim tv serijama\.
