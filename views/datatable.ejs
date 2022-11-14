@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Series</title>
+    <style>
+      form {
+        margin: 1rem 0;
+      }
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>TV series</h1>
+    <form method="POST" id="forma">
+      <label for="search">Filter data:</label>
+      <input type="text" name="search" id="search" />
+
+      <label style="margin-left: 1rem" for="column">Column:</label>
+      <select id="column" name="column">
+        <option value="all">All</option>
+        <option value="ime">Title</option>
+        <option value="zanr">Genre</option>
+        <option value="datum_izlaska">Release date</option>
+        <option value="broj_sezona">No. of seasons</option>
+        <option value="broj_epizoda">No. of episodes</option>
+        <option value="status">Status</option>
+        <option value="godina_zavrsetka">Last aired</option>
+        <option value="trajanje">Duration</option>
+        <option value="jezik">Original language</option>
+        <option value="ocjena">Rating</option>
+        <option value="glumci">Actors</option>
+      </select>
+
+      <input type="submit" />
+    </form>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Release date</th>
+        <th>No. of seasons</th>
+        <th>No. of episodes</th>
+        <th>Status</th>
+        <th>Last aired</th>
+        <th>Duration</th>
+        <th>Original language</th>
+        <th>Rating</th>
+        <th>Actors</th>
+      </tr>
+      <% for (s of series) { %>
+      <tr>
+        <td><%= s.ime %></td>
+        <td>
+          <% for (z of s.zanr) { %>
+          <span><%= z + ', ' %></span>
+          <% } %>
+        </td>
+        <td><%= s.datum_izlaska %></td>
+        <td><%= s.broj_sezona %></td>
+        <td><%= s.broj_epizoda %></td>
+        <td><%= s.status %></td>
+        <td><%= s.godina_zavrsetka %></td>
+        <td><%= s.trajanje %></td>
+        <td><%= s.jezik %></td>
+        <td><%= s.ocjena %></td>
+        <td>
+          <% for (g of s.glumci) { %>
+          <span><%= g + ', ' %></span>
+          <% } %>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+    <div
+      style="display: flex; justify-content: space-between; align-items: center"
+    >
+      <div>
+        <a
+          href="javascript:vratiCSV()"
+          style="display: inline-block; margin: 1rem 1rem 1rem 0"
+          >Download current data as CSV</a
+        >
+        <a
+          href="javascript:vratiJSON()"
+          style="display: inline-block; margin: 1rem 0"
+          >Download current data as JSON</a
+        >
+      </div>
+      <div>
+        <a href="/" style="display: inline-block; margin: 1rem 0 1rem auto"
+          ><button>Home page</button>
+        </a>
+      </div>
+    </div>
+  </body>
+  <% if (series) { %>
+  <script type="text/javascript">
+    function vratiCSV() {
+      var currentData = JSON.parse(`<%- JSON.stringify(series) %>`);
+
+      let csvContent =
+        "Title,Genre,Release date,No. of seasons,No. of episodes,Status,Last aired,Duration,Original language,Rating,Actor\n" +
+        currentData
+          .map(function (e) {
+            var returnCSV = "";
+            var csvPart =
+              e.ime +
+              ",{" +
+              e.zanr.join(" ") +
+              "}," +
+              e.datum_izlaska +
+              "," +
+              e.broj_sezona +
+              "," +
+              e.broj_epizoda +
+              "," +
+              e.status +
+              "," +
+              e.godina_zavrsetka +
+              "," +
+              e.trajanje +
+              "," +
+              e.jezik +
+              "," +
+              e.ocjena +
+              ",";
+            for (g of e.glumci) {
+              returnCSV += csvPart + g + "\n";
+            }
+            return returnCSV;
+          })
+          .join("");
+      // console.log("EVOGA");
+      // console.log(csvContent);
+      var hiddenElement = document.createElement("a");
+      hiddenElement.href =
+        "data:text/csv;charset=utf-8," + encodeURI(csvContent);
+      hiddenElement.target = "_blank";
+
+      hiddenElement.download = "serije.csv";
+      hiddenElement.click();
+    }
+    function vratiJSON() {
+      var currentData = JSON.parse(`<%- JSON.stringify(series) %>`);
+      // console.log("DATA JE");
+      // console.log(currentData);
+      var hiddenElement = document.createElement("a");
+      hiddenElement.href =
+        "data:text/json;charset=utf-8," +
+        encodeURIComponent(JSON.stringify(currentData));
+      hiddenElement.target = "_blank";
+
+      hiddenElement.download = "serije.json";
+      hiddenElement.click();
+    }
+  </script>
+  <% } %>
+</html>

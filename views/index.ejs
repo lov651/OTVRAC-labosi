@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lovro Katić" />
+    <meta name="title" content="TV serije" />
+    <meta
+      name="description"
+      content="Aplikacija bazirana na skupu podataka o tv serijama"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      li {
+        padding-bottom: 0.25rem;
+      }
+    </style>
+    <title>Home</title>
+  </head>
+  <body>
+    <h1 style="padding: 1rem">Dobrodošli u TV series aplikaciju</h1>
+    <h2 style="padding: 0.5rem">Opis aplikacije:</h2>
+    <p style="width: 600px; padding: 0.5rem 0; text-align: center">
+      Aplikacija omogućava filtriranje i prikaz podataka o tv serijama. Skup
+      podataka koji je korišten u ovoj aplikaciji sadrži informacije o
+      različitim tv serijama. Baza podataka Serije se sastoji od 3 tablice koje
+      predstavljaju podatke o serijama, glumcima i vezema između njih.
+    </p>
+    <h2 style="padding: 1rem">Podaci sadrže dvije skupine atributa:</h2>
+    <ol style="width: 530px">
+      <li>
+        Atributi serije - ime, zanr, trajanje, datum izlaska, godina zavrsetka,
+        ocjena, status, broj sezona, broj epizoda, jezik, glumci
+      </li>
+      <li>Atributi glumaca - ime, prezime</li>
+    </ol>
+    <h3 style="padding: 0.3rem 0">Opis atributa:</h3>
+    <h4 style="padding: 0.2rem 0; text-decoration: underline">
+      Atributi serije
+    </h4>
+    <ul style="width: 530px">
+      <li>ime - ime serije</li>
+      <li>zanr - polje žanrova u čiju kategoriju spada serija</li>
+      <li>trajane - okvirno trajanje svake epizode (u formatu od-do minuta)</li>
+      <li>
+        datum izlaska - datum početka emitiranja serije u formatu YYYY-MM-DD
+      </li>
+      <li>
+        godina zavrsetka - godina prestanka emitiranja serije ili - ako serija
+        još nije gotova
+      </li>
+      <li>ocjena - ocjena za seriju sa IMDB-a</li>
+      <li>status - stanje serije, da li još traje ili je gotova</li>
+      <li>broj sezona - koliko sezona ima serija</li>
+      <li>broj epizoda - koliko epizoda ima serija sveukupno</li>
+      <li>jezik - na kojem jeziku je izvorno serija</li>
+      <li>glumci - polje glumaca koji glume u seriji</li>
+    </ul>
+    <h4 style="padding: 0.2rem 0; text-decoration: underline">
+      Atributi glumaca
+    </h4>
+    <ul style="width: 530px">
+      <li>ime - ime glumca</li>
+      <li>prezime - prezime glumca</li>
+    </ul>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem 0;
+        font-size: 1.5rem;
+        width: 150px;
+        height: 50px;
+        border-radius: 1rem;
+        background-color: #c2bbba;
+      "
+    >
+      <a href="/serije" style="text-decoration: none"><h3>View series</h3></a>
+    </div>
+    <div style="margin: 1rem">
+      <a href="javascript:vratiCSV()" style="padding-right: 1rem"
+        ><button style="padding: 0.5rem; font-size: 1.25rem">
+          Download all series in CSV format
+        </button></a
+      >
+      <a href="javascript:vratiJSON()"
+        ><button style="padding: 0.5rem; font-size: 1.25rem">
+          Download all series in JSON format
+        </button></a
+      >
+    </div>
+  </body>
+  <% if (series) { %>
+  <script type="text/javascript">
+    function vratiCSV() {
+      var currentData = JSON.parse(`<%- JSON.stringify(series) %>`);
+
+      let csvContent =
+        "Title,Genre,Release date,No. of seasons,No. of episodes,Status,Last aired,Duration,Original language,Rating,Actor\n" +
+        currentData
+          .map(function (e) {
+            var returnCSV = "";
+            var csvPart =
+              e.ime +
+              ",{" +
+              e.zanr.join(" ") +
+              "}," +
+              e.datum_izlaska +
+              "," +
+              e.broj_sezona +
+              "," +
+              e.broj_epizoda +
+              "," +
+              e.status +
+              "," +
+              e.godina_zavrsetka +
+              "," +
+              e.trajanje +
+              "," +
+              e.jezik +
+              "," +
+              e.ocjena +
+              ",";
+            for (g of e.glumci) {
+              returnCSV += csvPart + g + "\n";
+            }
+            return returnCSV;
+          })
+          .join("");
+      // console.log("EVOGA");
+      // console.log(csvContent);
+      var hiddenElement = document.createElement("a");
+      hiddenElement.href =
+        "data:text/csv;charset=utf-8," + encodeURI(csvContent);
+      hiddenElement.target = "_blank";
+
+      hiddenElement.download = "serije.csv";
+      hiddenElement.click();
+    }
+    function vratiJSON() {
+      var currentData = JSON.parse(`<%- JSON.stringify(series) %>`);
+      // console.log("DATA JE");
+      // console.log(currentData);
+      var hiddenElement = document.createElement("a");
+      hiddenElement.href =
+        "data:text/json;charset=utf-8," +
+        encodeURIComponent(JSON.stringify(currentData));
+      hiddenElement.target = "_blank";
+
+      hiddenElement.download = "serije.json";
+      hiddenElement.click();
+    }
+  </script>
+  <% } %>
+</html>

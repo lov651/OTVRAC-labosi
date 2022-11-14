@@ -1,0 +1,2187 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://or.fer.unizg.hr/serije.json",
+  "type": "array",
+  "default": [],
+  "title": "TV serije",
+  "description": "Skup tv serija za labose iz otvoreno računarstva",
+  "items": {
+    "type": "object",
+    "title": "Serija",
+    "required": [
+      "ime",
+      "zanr",
+      "trajanje",
+      "datum_izlaska",
+      "broj_sezona",
+      "broj_epizoda",
+      "godina_zavrsetka",
+      "status",
+      "jezik",
+      "ocjena",
+      "glumci"
+    ],
+    "description": "Tv serija",
+    "properties": {
+      "ime": {
+        "type": "string",
+        "title": "Ime serije",
+        "description": "Ime serije",
+        "examples": [
+          "Arcane",
+          "Squid Game",
+          "Breaking Bad",
+          "Tear Along the Dotted Line",
+          "Hannibal",
+          "True Detective",
+          "Fargo",
+          "The Terror",
+          "The Alienist",
+          "Penny Dreadful",
+          "Narcos",
+          "Daredevil",
+          "Sherlock"
+        ]
+      },
+      "zanr": {
+        "type": "array",
+        "title": "Žanrovi serije",
+        "description": "Polje žanrova u čiju kategoriju spada serija",
+        "items": {
+          "type": "string",
+          "title": "Žanr",
+          "description": "Žanr kojemu pripada serija",
+          "examples": [
+            "Action",
+            "Adventure",
+            "Animation",
+            "Steampunk",
+            "Survival",
+            "Drama",
+            "Thriller",
+            "Crime drama",
+            "Serial drama",
+            "Black comedy",
+            "Adult animation",
+            "Comedy drama",
+            "Psychological horror",
+            "Psychological thriller",
+            "Crime thriller",
+            "Anthology",
+            "Detective",
+            "Mystery",
+            "Neo-noir",
+            "Southern Gothic",
+            "Noir",
+            "Horror",
+            "Period drama",
+            "Murder mystery",
+            "Gothic horror",
+            "Dark fantasy",
+            "Historical fantasy",
+            "Biographical",
+            "Legal drama",
+            "Superhero",
+            "Crime"
+          ]
+        },
+        "examples": [
+          ["Action", "Adventure", "Animation", "Steampunk"],
+          ["Survival", "Drama", "Thriller"],
+          ["Crime drama", "Thriller", "Serial drama", "Black comedy"],
+          ["Adult animation", "Comedy drama"],
+          [
+            "Psychological horror",
+            "Psychological thriller",
+            "Crime drama",
+            "Crime thriller"
+          ],
+          [
+            "Anthology",
+            "Crime drama",
+            "Detective",
+            "Mystery",
+            "Neo-noir",
+            "Southern Gothic"
+          ],
+          ["Anthology", "Crime drama", "Noir", "Thriller", "Black comedy"],
+          ["Drama", "Horror", "Psychological thriller"],
+          ["Period drama", "Murder mystery", "Psychological thriller"],
+          [
+            "Drama",
+            "Gothic horror",
+            "Thriller",
+            "Dark fantasy",
+            "Historical fantasy"
+          ],
+          ["Crime drama", "Biographical"],
+          ["Crime drama", "Action", "Legal drama", "Superhero"],
+          ["Crime", "Mystery", "Comedy drama"]
+        ]
+      },
+      "trajanje": {
+        "type": "string",
+        "title": "Trajanje epizoda",
+        "description": "Okvirno trajanje svake epizode (u formatu od-do minuta)",
+        "examples": [
+          "39-44 minutes",
+          "32-63 minutes",
+          "43-58 minutes",
+          "16-22 minutes",
+          "43 minutes",
+          "54-87 minutes",
+          "39-68 minutes",
+          "40-56 minutes",
+          "43-55 minutes",
+          "47-60 minutes",
+          "43-60 minutes",
+          "46-61 minutes",
+          "85-90 minutes"
+        ]
+      },
+      "datum_izlaska": {
+        "type": "string",
+        "title": "Datum izlaska serije",
+        "description": "Datum početka emitiranja serije u formatu YYYY-MM-DD",
+        "examples": [
+          "2021-11-06",
+          "2021-09-07",
+          "2008-01-20",
+          "2021-11-19",
+          "2013-04-04",
+          "2014-01-12",
+          "2014-04-15",
+          "2018-03-25",
+          "2018-01-21",
+          "2014-05-11",
+          "2015-08-28",
+          "2015-04-10",
+          "2010-07-25"
+        ]
+      },
+      "broj_sezona": {
+        "type": "integer",
+        "title": "Broj sezona serije",
+        "description": "Koliko sezona ima serija",
+        "examples": [1, 5, 3, 4, 2]
+      },
+      "broj_epizoda": {
+        "type": "integer",
+        "title": "Broj epizoda serije",
+        "description": "Koliko epizoda ima serija sveukupno",
+        "examples": [9, 62, 6, 39, 24, 41, 20, 18, 27, 30, 13]
+      },
+      "godina_zavrsetka": {
+        "type": "string",
+        "title": "Godina završetka",
+        "description": "Godina prestanka emitiranja serije ili - ako serija još nije gotova",
+        "examples": [
+          "-",
+          "2013",
+          "2021",
+          "2015",
+          "2019",
+          "2020",
+          "2016",
+          "2017",
+          "2018"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "title": "Status serije",
+        "description": "Stanje serije, da li još traje ili je gotova",
+        "examples": ["Ongoing", "Finished"]
+      },
+      "jezik": {
+        "type": "string",
+        "title": "Jezik serije",
+        "description": "Na kojem jeziku je izvorno serija",
+        "examples": ["English", "Korean", "Italian", "Spanish"]
+      },
+      "ocjena": {
+        "type": "string",
+        "title": "Ocjena serije",
+        "description": "Ocjena za seriju sa IMDB-a",
+        "examples": [
+          "9",
+          "8",
+          "9.5",
+          "8.6",
+          "8.5",
+          "8.9",
+          "7.9",
+          "7.7",
+          "8.2",
+          "8.8",
+          "9.1"
+        ]
+      },
+      "glumci": {
+        "type": "array",
+        "title": "Glumci",
+        "description": "Polje glumaca koji glume u seriji",
+        "items": {
+          "type": "object",
+          "title": "Glumac",
+          "required": ["Ime", "Prezime"],
+          "description": "Podaci o glumcu",
+          "properties": {
+            "Ime": {
+              "type": "string",
+              "title": "Ime glumca",
+              "description": "Ime glumca",
+              "examples": [
+                "Hailee",
+                "Ella",
+                "Kevin",
+                "Katie",
+                "Jason",
+                "Harry",
+                "Mick",
+                "Lee",
+                "Park",
+                "Wi",
+                "HoYeon",
+                "O",
+                "Heo",
+                "Anupam",
+                "Bryan",
+                "Aaron",
+                "Anna",
+                "Dean",
+                "Betsy",
+                "Bob",
+                "Giancarlo",
+                "Jonathan",
+                "Michele",
+                "Valerio",
+                "Paolo",
+                "Veronica",
+                "Chiara",
+                "Hugh",
+                "Mads",
+                "Caroline",
+                "Laurence",
+                "Gillian",
+                "Raul",
+                "Matthew",
+                "Woody",
+                "Michelle",
+                "Colin",
+                "Vince",
+                "Rachel",
+                "Taylor",
+                "Mahershala",
+                "Stephen",
+                "Scoot",
+                "Billy Bob",
+                "Martin",
+                "Patrick",
+                "Kirsten",
+                "Jesse",
+                "Jean",
+                "Ewan",
+                "Mary Elizabeth",
+                "Carrie",
+                "David",
+                "Chris",
+                "Jared",
+                "Tobias",
+                "Ciaran",
+                "Daniel",
+                "Luke",
+                "Dakota",
+                "Ted",
+                "Eva",
+                "Josh",
+                "Rory",
+                "Billie",
+                "Timothy",
+                "Wagner",
+                "Boyd",
+                "Pedro",
+                "Damian",
+                "Alberto",
+                "Charlie",
+                "Deborah Ann",
+                "Vincent",
+                "Elden",
+                "Rosario",
+                "Benedict",
+                "Mark",
+                "Una",
+                "Andrew"
+              ]
+            },
+            "Prezime": {
+              "type": "string",
+              "title": "Prezime glumca",
+              "description": "Prezime glumca",
+              "examples": [
+                "Steinfeld",
+                "Purnell",
+                "Alejandro",
+                "Leung",
+                "Spisak",
+                "Lloyd",
+                "Wingert",
+                "Jung-jae",
+                "Hae-soo",
+                "Ha-joon",
+                "Jung",
+                "Yeong-su",
+                "Sung-tae",
+                "Tripathi",
+                "Cranston",
+                "Paul",
+                "Gunn",
+                "Norris",
+                "Brandt",
+                "Odenkirk",
+                "Esposito",
+                "Banks",
+                "Rech",
+                "Mastandrea",
+                "Vivio",
+                "Puccio",
+                "Gioncardi",
+                "Dancy",
+                "Mikkelsen",
+                "Dhavernas",
+                "Fishburne",
+                "Anderson",
+                "Esparza",
+                "McConaughey",
+                "Harrelson",
+                "Monaghan",
+                "Farrell",
+                "Vaughn",
+                "McAdams",
+                "Kitsch",
+                "Ali",
+                "Dorff",
+                "McNairy",
+                "Thornton",
+                "Freeman",
+                "Wilson",
+                "Dunst",
+                "Plemons",
+                "Smart",
+                "McGregor",
+                "Winstead",
+                "Coon",
+                "Thewlis",
+                "Rock",
+                "Schwartzman",
+                "Harris",
+                "Menzies",
+                "Hinds",
+                "Brühl",
+                "Evans",
+                "Fanning",
+                "Levine",
+                "Green",
+                "Hartnett",
+                "Kinnear",
+                "Treadaway",
+                "Piper",
+                "Dalton",
+                "Moura",
+                "Holbrook",
+                "Pascal",
+                "Alcazar",
+                "Ammann",
+                "Cox",
+                "Woll",
+                "D Onofrio",
+                "Henson",
+                "Dawson",
+                "Cumberbatch",
+                "Gatiss",
+                "Stubbs",
+                "Scott"
+              ]
+            }
+          },
+          "examples": [
+            {
+              "Ime": "Hailee",
+              "Prezime": "Steinfeld"
+            },
+            {
+              "Ime": "Ella",
+              "Prezime": "Purnell"
+            },
+            {
+              "Ime": "Kevin",
+              "Prezime": "Alejandro"
+            },
+            {
+              "Ime": "Katie",
+              "Prezime": "Leung"
+            },
+            {
+              "Ime": "Jason",
+              "Prezime": "Spisak"
+            },
+            {
+              "Ime": "Harry",
+              "Prezime": "Lloyd"
+            },
+            {
+              "Ime": "Mick",
+              "Prezime": "Wingert"
+            },
+            {
+              "Ime": "Lee",
+              "Prezime": "Jung-jae"
+            },
+            {
+              "Ime": "Park",
+              "Prezime": "Hae-soo"
+            },
+            {
+              "Ime": "Wi",
+              "Prezime": "Ha-joon"
+            },
+            {
+              "Ime": "HoYeon",
+              "Prezime": "Jung"
+            },
+            {
+              "Ime": "O",
+              "Prezime": "Yeong-su"
+            },
+            {
+              "Ime": "Heo",
+              "Prezime": "Sung-tae"
+            },
+            {
+              "Ime": "Anupam",
+              "Prezime": "Tripathi"
+            },
+            {
+              "Ime": "Bryan",
+              "Prezime": "Cranston"
+            },
+            {
+              "Ime": "Aaron",
+              "Prezime": "Paul"
+            },
+            {
+              "Ime": "Anna",
+              "Prezime": "Gunn"
+            },
+            {
+              "Ime": "Dean",
+              "Prezime": "Norris"
+            },
+            {
+              "Ime": "Betsy",
+              "Prezime": "Brandt"
+            },
+            {
+              "Ime": "Bob",
+              "Prezime": "Odenkirk"
+            },
+            {
+              "Ime": "Giancarlo",
+              "Prezime": "Esposito"
+            },
+            {
+              "Ime": "Jonathan",
+              "Prezime": "Banks"
+            },
+            {
+              "Ime": "Michele",
+              "Prezime": "Rech"
+            },
+            {
+              "Ime": "Valerio",
+              "Prezime": "Mastandrea"
+            },
+            {
+              "Ime": "Paolo",
+              "Prezime": "Vivio"
+            },
+            {
+              "Ime": "Veronica",
+              "Prezime": "Puccio"
+            },
+            {
+              "Ime": "Chiara",
+              "Prezime": "Gioncardi"
+            },
+            {
+              "Ime": "Hugh",
+              "Prezime": "Dancy"
+            },
+            {
+              "Ime": "Mads",
+              "Prezime": "Mikkelsen"
+            },
+            {
+              "Ime": "Caroline",
+              "Prezime": "Dhavernas"
+            },
+            {
+              "Ime": "Laurence",
+              "Prezime": "Fishburne"
+            },
+            {
+              "Ime": "Gillian",
+              "Prezime": "Anderson"
+            },
+            {
+              "Ime": "Raul",
+              "Prezime": "Esparza"
+            },
+            {
+              "Ime": "Matthew",
+              "Prezime": "McConaughey"
+            },
+            {
+              "Ime": "Woody",
+              "Prezime": "Harrelson"
+            },
+            {
+              "Ime": "Michelle",
+              "Prezime": "Monaghan"
+            },
+            {
+              "Ime": "Colin",
+              "Prezime": "Farrell"
+            },
+            {
+              "Ime": "Vince",
+              "Prezime": "Vaughn"
+            },
+            {
+              "Ime": "Rachel",
+              "Prezime": "McAdams"
+            },
+            {
+              "Ime": "Taylor",
+              "Prezime": "Kitsch"
+            },
+            {
+              "Ime": "Mahershala",
+              "Prezime": "Ali"
+            },
+            {
+              "Ime": "Stephen",
+              "Prezime": "Dorff"
+            },
+            {
+              "Ime": "Scoot",
+              "Prezime": "McNairy"
+            },
+            {
+              "Ime": "Billy Bob",
+              "Prezime": "Thornton"
+            },
+            {
+              "Ime": "Martin",
+              "Prezime": "Freeman"
+            },
+            {
+              "Ime": "Patrick",
+              "Prezime": "Wilson"
+            },
+            {
+              "Ime": "Kirsten",
+              "Prezime": "Dunst"
+            },
+            {
+              "Ime": "Jesse",
+              "Prezime": "Plemons"
+            },
+            {
+              "Ime": "Jean",
+              "Prezime": "Smart"
+            },
+            {
+              "Ime": "Ewan",
+              "Prezime": "McGregor"
+            },
+            {
+              "Ime": "Mary Elizabeth",
+              "Prezime": "Winstead"
+            },
+            {
+              "Ime": "Carrie",
+              "Prezime": "Coon"
+            },
+            {
+              "Ime": "David",
+              "Prezime": "Thewlis"
+            },
+            {
+              "Ime": "Chris",
+              "Prezime": "Rock"
+            },
+            {
+              "Ime": "Jason",
+              "Prezime": "Schwartzman"
+            },
+            {
+              "Ime": "Jared",
+              "Prezime": "Harris"
+            },
+            {
+              "Ime": "Tobias",
+              "Prezime": "Menzies"
+            },
+            {
+              "Ime": "Ciaran",
+              "Prezime": "Hinds"
+            },
+            {
+              "Ime": "Daniel",
+              "Prezime": "Brühl"
+            },
+            {
+              "Ime": "Luke",
+              "Prezime": "Evans"
+            },
+            {
+              "Ime": "Dakota",
+              "Prezime": "Fanning"
+            },
+            {
+              "Ime": "Ted",
+              "Prezime": "Levine"
+            },
+            {
+              "Ime": "Eva",
+              "Prezime": "Green"
+            },
+            {
+              "Ime": "Josh",
+              "Prezime": "Hartnett"
+            },
+            {
+              "Ime": "Rory",
+              "Prezime": "Kinnear"
+            },
+            {
+              "Ime": "Harry",
+              "Prezime": "Treadaway"
+            },
+            {
+              "Ime": "Billie",
+              "Prezime": "Piper"
+            },
+            {
+              "Ime": "Timothy",
+              "Prezime": "Dalton"
+            },
+            {
+              "Ime": "Wagner",
+              "Prezime": "Moura"
+            },
+            {
+              "Ime": "Boyd",
+              "Prezime": "Holbrook"
+            },
+            {
+              "Ime": "Pedro",
+              "Prezime": "Pascal"
+            },
+            {
+              "Ime": "Damian",
+              "Prezime": "Alcazar"
+            },
+            {
+              "Ime": "Alberto",
+              "Prezime": "Ammann"
+            },
+            {
+              "Ime": "Charlie",
+              "Prezime": "Cox"
+            },
+            {
+              "Ime": "Deborah Ann",
+              "Prezime": "Woll"
+            },
+            {
+              "Ime": "Vincent",
+              "Prezime": "D Onofrio"
+            },
+            {
+              "Ime": "Elden",
+              "Prezime": "Henson"
+            },
+            {
+              "Ime": "Rosario",
+              "Prezime": "Dawson"
+            },
+            {
+              "Ime": "Benedict",
+              "Prezime": "Cumberbatch"
+            },
+            {
+              "Ime": "Mark",
+              "Prezime": "Gatiss"
+            },
+            {
+              "Ime": "Una",
+              "Prezime": "Stubbs"
+            },
+            {
+              "Ime": "Andrew",
+              "Prezime": "Scott"
+            },
+            {
+              "Ime": "Martin",
+              "Prezime": "Freeman"
+            }
+          ]
+        },
+        "examples": [
+          [
+            {
+              "Ime": "Hailee",
+              "Prezime": "Steinfeld"
+            },
+            {
+              "Ime": "Ella",
+              "Prezime": "Purnell"
+            },
+            {
+              "Ime": "Kevin",
+              "Prezime": "Alejandro"
+            },
+            {
+              "Ime": "Katie",
+              "Prezime": "Leung"
+            },
+            {
+              "Ime": "Jason",
+              "Prezime": "Spisak"
+            },
+            {
+              "Ime": "Harry",
+              "Prezime": "Lloyd"
+            },
+            {
+              "Ime": "Mick",
+              "Prezime": "Wingert"
+            }
+          ],
+          [
+            {
+              "Ime": "Lee",
+              "Prezime": "Jung-jae"
+            },
+            {
+              "Ime": "Park",
+              "Prezime": "Hae-soo"
+            },
+            {
+              "Ime": "Wi",
+              "Prezime": "Ha-joon"
+            },
+            {
+              "Ime": "HoYeon",
+              "Prezime": "Jung"
+            },
+            {
+              "Ime": "O",
+              "Prezime": "Yeong-su"
+            },
+            {
+              "Ime": "Heo",
+              "Prezime": "Sung-tae"
+            },
+            {
+              "Ime": "Anupam",
+              "Prezime": "Tripathi"
+            }
+          ],
+          [
+            {
+              "Ime": "Bryan",
+              "Prezime": "Cranston"
+            },
+            {
+              "Ime": "Aaron",
+              "Prezime": "Paul"
+            },
+            {
+              "Ime": "Anna",
+              "Prezime": "Gunn"
+            },
+            {
+              "Ime": "Dean",
+              "Prezime": "Norris"
+            },
+            {
+              "Ime": "Betsy",
+              "Prezime": "Brandt"
+            },
+            {
+              "Ime": "Bob",
+              "Prezime": "Odenkirk"
+            },
+            {
+              "Ime": "Giancarlo",
+              "Prezime": "Esposito"
+            },
+            {
+              "Ime": "Jonathan",
+              "Prezime": "Banks"
+            }
+          ],
+          [
+            {
+              "Ime": "Michele",
+              "Prezime": "Rech"
+            },
+            {
+              "Ime": "Valerio",
+              "Prezime": "Mastandrea"
+            },
+            {
+              "Ime": "Paolo",
+              "Prezime": "Vivio"
+            },
+            {
+              "Ime": "Veronica",
+              "Prezime": "Puccio"
+            },
+            {
+              "Ime": "Chiara",
+              "Prezime": "Gioncardi"
+            }
+          ],
+          [
+            {
+              "Ime": "Hugh",
+              "Prezime": "Dancy"
+            },
+            {
+              "Ime": "Mads",
+              "Prezime": "Mikkelsen"
+            },
+            {
+              "Ime": "Caroline",
+              "Prezime": "Dhavernas"
+            },
+            {
+              "Ime": "Laurence",
+              "Prezime": "Fishburne"
+            },
+            {
+              "Ime": "Gillian",
+              "Prezime": "Anderson"
+            },
+            {
+              "Ime": "Raul",
+              "Prezime": "Esparza"
+            }
+          ],
+          [
+            {
+              "Ime": "Matthew",
+              "Prezime": "McConaughey"
+            },
+            {
+              "Ime": "Woody",
+              "Prezime": "Harrelson"
+            },
+            {
+              "Ime": "Michelle",
+              "Prezime": "Monaghan"
+            },
+            {
+              "Ime": "Colin",
+              "Prezime": "Farrell"
+            },
+            {
+              "Ime": "Vince",
+              "Prezime": "Vaughn"
+            },
+            {
+              "Ime": "Rachel",
+              "Prezime": "McAdams"
+            },
+            {
+              "Ime": "Taylor",
+              "Prezime": "Kitsch"
+            },
+            {
+              "Ime": "Mahershala",
+              "Prezime": "Ali"
+            },
+            {
+              "Ime": "Stephen",
+              "Prezime": "Dorff"
+            },
+            {
+              "Ime": "Scoot",
+              "Prezime": "McNairy"
+            }
+          ],
+          [
+            {
+              "Ime": "Billy Bob",
+              "Prezime": "Thornton"
+            },
+            {
+              "Ime": "Martin",
+              "Prezime": "Freeman"
+            },
+            {
+              "Ime": "Patrick",
+              "Prezime": "Wilson"
+            },
+            {
+              "Ime": "Kirsten",
+              "Prezime": "Dunst"
+            },
+            {
+              "Ime": "Jesse",
+              "Prezime": "Plemons"
+            },
+            {
+              "Ime": "Jean",
+              "Prezime": "Smart"
+            },
+            {
+              "Ime": "Ewan",
+              "Prezime": "McGregor"
+            },
+            {
+              "Ime": "Mary Elizabeth",
+              "Prezime": "Winstead"
+            },
+            {
+              "Ime": "Carrie",
+              "Prezime": "Coon"
+            },
+            {
+              "Ime": "David",
+              "Prezime": "Thewlis"
+            },
+            {
+              "Ime": "Chris",
+              "Prezime": "Rock"
+            },
+            {
+              "Ime": "Jason",
+              "Prezime": "Schwartzman"
+            }
+          ],
+          [
+            {
+              "Ime": "Jared",
+              "Prezime": "Harris"
+            },
+            {
+              "Ime": "Tobias",
+              "Prezime": "Menzies"
+            },
+            {
+              "Ime": "Ciaran",
+              "Prezime": "Hinds"
+            }
+          ],
+          [
+            {
+              "Ime": "Daniel",
+              "Prezime": "Brühl"
+            },
+            {
+              "Ime": "Luke",
+              "Prezime": "Evans"
+            },
+            {
+              "Ime": "Dakota",
+              "Prezime": "Fanning"
+            },
+            {
+              "Ime": "Ted",
+              "Prezime": "Levine"
+            }
+          ],
+          [
+            {
+              "Ime": "Eva",
+              "Prezime": "Green"
+            },
+            {
+              "Ime": "Josh",
+              "Prezime": "Hartnett"
+            },
+            {
+              "Ime": "Rory",
+              "Prezime": "Kinnear"
+            },
+            {
+              "Ime": "Harry",
+              "Prezime": "Treadaway"
+            },
+            {
+              "Ime": "Billie",
+              "Prezime": "Piper"
+            },
+            {
+              "Ime": "Timothy",
+              "Prezime": "Dalton"
+            }
+          ],
+          [
+            {
+              "Ime": "Wagner",
+              "Prezime": "Moura"
+            },
+            {
+              "Ime": "Boyd",
+              "Prezime": "Holbrook"
+            },
+            {
+              "Ime": "Pedro",
+              "Prezime": "Pascal"
+            },
+            {
+              "Ime": "Damian",
+              "Prezime": "Alcazar"
+            },
+            {
+              "Ime": "Alberto",
+              "Prezime": "Ammann"
+            }
+          ],
+          [
+            {
+              "Ime": "Charlie",
+              "Prezime": "Cox"
+            },
+            {
+              "Ime": "Deborah Ann",
+              "Prezime": "Woll"
+            },
+            {
+              "Ime": "Vincent",
+              "Prezime": "D Onofrio"
+            },
+            {
+              "Ime": "Elden",
+              "Prezime": "Henson"
+            },
+            {
+              "Ime": "Rosario",
+              "Prezime": "Dawson"
+            }
+          ],
+          [
+            {
+              "Ime": "Benedict",
+              "Prezime": "Cumberbatch"
+            },
+            {
+              "Ime": "Mark",
+              "Prezime": "Gatiss"
+            },
+            {
+              "Ime": "Una",
+              "Prezime": "Stubbs"
+            },
+            {
+              "Ime": "Andrew",
+              "Prezime": "Scott"
+            },
+            {
+              "Ime": "Martin",
+              "Prezime": "Freeman"
+            }
+          ]
+        ]
+      }
+    },
+    "examples": [
+      {
+        "ime": "Arcane",
+        "zanr": ["Action", "Adventure", "Animation", "Steampunk"],
+        "trajanje": "39-44 minutes",
+        "datum_izlaska": "2021-11-06",
+        "broj_sezona": 1,
+        "broj_epizoda": 9,
+        "godina_zavrsetka": "-",
+        "status": "Ongoing",
+        "jezik": "English",
+        "ocjena": "9",
+        "glumci": [
+          {
+            "Ime": "Hailee",
+            "Prezime": "Steinfeld"
+          },
+          {
+            "Ime": "Ella",
+            "Prezime": "Purnell"
+          },
+          {
+            "Ime": "Kevin",
+            "Prezime": "Alejandro"
+          },
+          {
+            "Ime": "Katie",
+            "Prezime": "Leung"
+          },
+          {
+            "Ime": "Jason",
+            "Prezime": "Spisak"
+          },
+          {
+            "Ime": "Harry",
+            "Prezime": "Lloyd"
+          },
+          {
+            "Ime": "Mick",
+            "Prezime": "Wingert"
+          }
+        ]
+      },
+      {
+        "ime": "Squid Game",
+        "zanr": ["Survival", "Drama", "Thriller"],
+        "trajanje": "32-63 minutes",
+        "datum_izlaska": "2021-09-07",
+        "broj_sezona": 1,
+        "broj_epizoda": 9,
+        "godina_zavrsetka": "-",
+        "status": "Ongoing",
+        "jezik": "Korean",
+        "ocjena": "8",
+        "glumci": [
+          {
+            "Ime": "Lee",
+            "Prezime": "Jung-jae"
+          },
+          {
+            "Ime": "Park",
+            "Prezime": "Hae-soo"
+          },
+          {
+            "Ime": "Wi",
+            "Prezime": "Ha-joon"
+          },
+          {
+            "Ime": "HoYeon",
+            "Prezime": "Jung"
+          },
+          {
+            "Ime": "O",
+            "Prezime": "Yeong-su"
+          },
+          {
+            "Ime": "Heo",
+            "Prezime": "Sung-tae"
+          },
+          {
+            "Ime": "Anupam",
+            "Prezime": "Tripathi"
+          }
+        ]
+      },
+      {
+        "ime": "Breaking Bad",
+        "zanr": ["Crime drama", "Thriller", "Serial drama", "Black comedy"],
+        "trajanje": "43-58 minutes",
+        "datum_izlaska": "2008-01-20",
+        "broj_sezona": 5,
+        "broj_epizoda": 62,
+        "godina_zavrsetka": "2013",
+        "status": "Finished",
+        "jezik": "English",
+        "ocjena": "9.5",
+        "glumci": [
+          {
+            "Ime": "Bryan",
+            "Prezime": "Cranston"
+          },
+          {
+            "Ime": "Aaron",
+            "Prezime": "Paul"
+          },
+          {
+            "Ime": "Anna",
+            "Prezime": "Gunn"
+          },
+          {
+            "Ime": "Dean",
+            "Prezime": "Norris"
+          },
+          {
+            "Ime": "Betsy",
+            "Prezime": "Brandt"
+          },
+          {
+            "Ime": "Bob",
+            "Prezime": "Odenkirk"
+          },
+          {
+            "Ime": "Giancarlo",
+            "Prezime": "Esposito"
+          },
+          {
+            "Ime": "Jonathan",
+            "Prezime": "Banks"
+          }
+        ]
+      },
+      {
+        "ime": "Tear Along the Dotted Line",
+        "zanr": ["Adult animation", "Comedy drama"],
+        "trajanje": "16-22 minutes",
+        "datum_izlaska": "2021-11-19",
+        "broj_sezona": 1,
+        "broj_epizoda": 6,
+        "godina_zavrsetka": "2021",
+        "status": "Finished",
+        "jezik": "Italian",
+        "ocjena": "8.6",
+        "glumci": [
+          {
+            "Ime": "Michele",
+            "Prezime": "Rech"
+          },
+          {
+            "Ime": "Valerio",
+            "Prezime": "Mastandrea"
+          },
+          {
+            "Ime": "Paolo",
+            "Prezime": "Vivio"
+          },
+          {
+            "Ime": "Veronica",
+            "Prezime": "Puccio"
+          },
+          {
+            "Ime": "Chiara",
+            "Prezime": "Gioncardi"
+          }
+        ]
+      },
+      {
+        "ime": "Hannibal",
+        "zanr": [
+          "Psychological horror",
+          "Psychological thriller",
+          "Crime drama",
+          "Crime thriller"
+        ],
+        "trajanje": "43 minutes",
+        "datum_izlaska": "2013-04-04",
+        "broj_sezona": 3,
+        "broj_epizoda": 39,
+        "godina_zavrsetka": "2015",
+        "status": "Finished",
+        "jezik": "English",
+        "ocjena": "8.5",
+        "glumci": [
+          {
+            "Ime": "Hugh",
+            "Prezime": "Dancy"
+          },
+          {
+            "Ime": "Mads",
+            "Prezime": "Mikkelsen"
+          },
+          {
+            "Ime": "Caroline",
+            "Prezime": "Dhavernas"
+          },
+          {
+            "Ime": "Laurence",
+            "Prezime": "Fishburne"
+          },
+          {
+            "Ime": "Gillian",
+            "Prezime": "Anderson"
+          },
+          {
+            "Ime": "Raul",
+            "Prezime": "Esparza"
+          }
+        ]
+      },
+      {
+        "ime": "True Detective",
+        "zanr": [
+          "Anthology",
+          "Crime drama",
+          "Detective",
+          "Mystery",
+          "Neo-noir",
+          "Southern Gothic"
+        ],
+        "trajanje": "54-87 minutes",
+        "datum_izlaska": "2014-01-12",
+        "broj_sezona": 3,
+        "broj_epizoda": 24,
+        "godina_zavrsetka": "-",
+        "status": "Ongoing",
+        "jezik": "English",
+        "ocjena": "8.9",
+        "glumci": [
+          {
+            "Ime": "Matthew",
+            "Prezime": "McConaughey"
+          },
+          {
+            "Ime": "Woody",
+            "Prezime": "Harrelson"
+          },
+          {
+            "Ime": "Michelle",
+            "Prezime": "Monaghan"
+          },
+          {
+            "Ime": "Colin",
+            "Prezime": "Farrell"
+          },
+          {
+            "Ime": "Vince",
+            "Prezime": "Vaughn"
+          },
+          {
+            "Ime": "Rachel",
+            "Prezime": "McAdams"
+          },
+          {
+            "Ime": "Taylor",
+            "Prezime": "Kitsch"
+          },
+          {
+            "Ime": "Mahershala",
+            "Prezime": "Ali"
+          },
+          {
+            "Ime": "Stephen",
+            "Prezime": "Dorff"
+          },
+          {
+            "Ime": "Scoot",
+            "Prezime": "McNairy"
+          }
+        ]
+      },
+      {
+        "ime": "Fargo",
+        "zanr": [
+          "Anthology",
+          "Crime drama",
+          "Noir",
+          "Thriller",
+          "Black comedy"
+        ],
+        "trajanje": "39-68 minutes",
+        "datum_izlaska": "2014-04-15",
+        "broj_sezona": 4,
+        "broj_epizoda": 41,
+        "godina_zavrsetka": "-",
+        "status": "Ongoing",
+        "jezik": "English",
+        "ocjena": "8.9",
+        "glumci": [
+          {
+            "Ime": "Billy Bob",
+            "Prezime": "Thornton"
+          },
+          {
+            "Ime": "Martin",
+            "Prezime": "Freeman"
+          },
+          {
+            "Ime": "Patrick",
+            "Prezime": "Wilson"
+          },
+          {
+            "Ime": "Kirsten",
+            "Prezime": "Dunst"
+          },
+          {
+            "Ime": "Jesse",
+            "Prezime": "Plemons"
+          },
+          {
+            "Ime": "Jean",
+            "Prezime": "Smart"
+          },
+          {
+            "Ime": "Ewan",
+            "Prezime": "McGregor"
+          },
+          {
+            "Ime": "Mary Elizabeth",
+            "Prezime": "Winstead"
+          },
+          {
+            "Ime": "Carrie",
+            "Prezime": "Coon"
+          },
+          {
+            "Ime": "David",
+            "Prezime": "Thewlis"
+          },
+          {
+            "Ime": "Chris",
+            "Prezime": "Rock"
+          },
+          {
+            "Ime": "Jason",
+            "Prezime": "Schwartzman"
+          }
+        ]
+      },
+      {
+        "ime": "The Terror",
+        "zanr": ["Drama", "Horror", "Psychological thriller"],
+        "trajanje": "40-56 minutes",
+        "datum_izlaska": "2018-03-25",
+        "broj_sezona": 2,
+        "broj_epizoda": 20,
+        "godina_zavrsetka": "2019",
+        "status": "Finished",
+        "jezik": "English",
+        "ocjena": "7.9",
+        "glumci": [
+          {
+            "Ime": "Jared",
+            "Prezime": "Harris"
+          },
+          {
+            "Ime": "Tobias",
+            "Prezime": "Menzies"
+          },
+          {
+            "Ime": "Ciaran",
+            "Prezime": "Hinds"
+          }
+        ]
+      },
+      {
+        "ime": "The Alienist",
+        "zanr": ["Period drama", "Murder mystery", "Psychological thriller"],
+        "trajanje": "43-55 minutes",
+        "datum_izlaska": "2018-01-21",
+        "broj_sezona": 2,
+        "broj_epizoda": 18,
+        "godina_zavrsetka": "2020",
+        "status": "Finished",
+        "jezik": "English",
+        "ocjena": "7.7",
+        "glumci": [
+          {
+            "Ime": "Daniel",
+            "Prezime": "Brühl"
+          },
+          {
+            "Ime": "Luke",
+            "Prezime": "Evans"
+          },
+          {
+            "Ime": "Dakota",
+            "Prezime": "Fanning"
+          },
+          {
+            "Ime": "Ted",
+            "Prezime": "Levine"
+          }
+        ]
+      },
+      {
+        "ime": "Penny Dreadful",
+        "zanr": [
+          "Drama",
+          "Gothic horror",
+          "Thriller",
+          "Dark fantasy",
+          "Historical fantasy"
+        ],
+        "trajanje": "47-60 minutes",
+        "datum_izlaska": "2014-05-11",
+        "broj_sezona": 3,
+        "broj_epizoda": 27,
+        "godina_zavrsetka": "2016",
+        "status": "Finished",
+        "jezik": "English",
+        "ocjena": "8.2",
+        "glumci": [
+          {
+            "Ime": "Eva",
+            "Prezime": "Green"
+          },
+          {
+            "Ime": "Josh",
+            "Prezime": "Hartnett"
+          },
+          {
+            "Ime": "Rory",
+            "Prezime": "Kinnear"
+          },
+          {
+            "Ime": "Harry",
+            "Prezime": "Treadaway"
+          },
+          {
+            "Ime": "Billie",
+            "Prezime": "Piper"
+          },
+          {
+            "Ime": "Timothy",
+            "Prezime": "Dalton"
+          }
+        ]
+      },
+      {
+        "ime": "Narcos",
+        "zanr": ["Crime drama", "Biographical"],
+        "trajanje": "43-60 minutes",
+        "datum_izlaska": "2015-08-28",
+        "broj_sezona": 3,
+        "broj_epizoda": 30,
+        "godina_zavrsetka": "2017",
+        "status": "Finished",
+        "jezik": "Spanish",
+        "ocjena": "8.8",
+        "glumci": [
+          {
+            "Ime": "Wagner",
+            "Prezime": "Moura"
+          },
+          {
+            "Ime": "Boyd",
+            "Prezime": "Holbrook"
+          },
+          {
+            "Ime": "Pedro",
+            "Prezime": "Pascal"
+          },
+          {
+            "Ime": "Damian",
+            "Prezime": "Alcazar"
+          },
+          {
+            "Ime": "Alberto",
+            "Prezime": "Ammann"
+          }
+        ]
+      },
+      {
+        "ime": "Daredevil",
+        "zanr": ["Crime drama", "Action", "Legal drama", "Superhero"],
+        "trajanje": "46-61 minutes",
+        "datum_izlaska": "2015-04-10",
+        "broj_sezona": 3,
+        "broj_epizoda": 39,
+        "godina_zavrsetka": "2018",
+        "status": "Finished",
+        "jezik": "English",
+        "ocjena": "8.6",
+        "glumci": [
+          {
+            "Ime": "Charlie",
+            "Prezime": "Cox"
+          },
+          {
+            "Ime": "Deborah Ann",
+            "Prezime": "Woll"
+          },
+          {
+            "Ime": "Vincent",
+            "Prezime": "D Onofrio"
+          },
+          {
+            "Ime": "Elden",
+            "Prezime": "Henson"
+          },
+          {
+            "Ime": "Rosario",
+            "Prezime": "Dawson"
+          }
+        ]
+      },
+      {
+        "ime": "Sherlock",
+        "zanr": ["Crime", "Mystery", "Comedy drama"],
+        "trajanje": "85-90 minutes",
+        "datum_izlaska": "2010-07-25",
+        "broj_sezona": 4,
+        "broj_epizoda": 13,
+        "godina_zavrsetka": "2017",
+        "status": "Finished",
+        "jezik": "English",
+        "ocjena": "9.1",
+        "glumci": [
+          {
+            "Ime": "Benedict",
+            "Prezime": "Cumberbatch"
+          },
+          {
+            "Ime": "Mark",
+            "Prezime": "Gatiss"
+          },
+          {
+            "Ime": "Una",
+            "Prezime": "Stubbs"
+          },
+          {
+            "Ime": "Andrew",
+            "Prezime": "Scott"
+          },
+          {
+            "Ime": "Martin",
+            "Prezime": "Freeman"
+          }
+        ]
+      }
+    ]
+  },
+  "examples": [
+    [
+      {
+        "ime": "Arcane",
+        "zanr": ["Action", "Adventure", "Animation", "Steampunk"],
+        "trajanje": "39-44 minutes",
+        "datum_izlaska": "2021-11-06",
+        "broj_sezona": 1,
+        "broj_epizoda": 9,
+        "godina_zavrsetka": "-",
+        "status": "Ongoing",
+        "jezik": "English",
+        "ocjena": "9",
+        "glumci": [
+          {
+            "Ime": "Hailee",
+            "Prezime": "Steinfeld"
+          },
+          {
+            "Ime": "Ella",
+            "Prezime": "Purnell"
+          },
+          {
+            "Ime": "Kevin",
+            "Prezime": "Alejandro"
+          },
+          {
+            "Ime": "Katie",
+            "Prezime": "Leung"
+          },
+          {
+            "Ime": "Jason",
+            "Prezime": "Spisak"
+          },
+          {
+            "Ime": "Harry",
+            "Prezime": "Lloyd"
+          },
+          {
+            "Ime": "Mick",
+            "Prezime": "Wingert"
+          }
+        ]
+      },
+      {
+        "ime": "Squid Game",
+        "zanr": ["Survival", "Drama", "Thriller"],
+        "trajanje": "32-63 minutes",
+        "datum_izlaska": "2021-09-07",
+        "broj_sezona": 1,
+        "broj_epizoda": 9,
+        "godina_zavrsetka": "-",
+        "status": "Ongoing",
+        "jezik": "Korean",
+        "ocjena": "8",
+        "glumci": [
+          {
+            "Ime": "Lee",
+            "Prezime": "Jung-jae"
+          },
+          {
+            "Ime": "Park",
+            "Prezime": "Hae-soo"
+          },
+          {
+            "Ime": "Wi",
+            "Prezime": "Ha-joon"
+          },
+          {
+            "Ime": "HoYeon",
+            "Prezime": "Jung"
+          },
+          {
+            "Ime": "O",
+            "Prezime": "Yeong-su"
+          },
+          {
+            "Ime": "Heo",
+            "Prezime": "Sung-tae"
+          },
+          {
+            "Ime": "Anupam",
+            "Prezime": "Tripathi"
+          }
+        ]
+      },
+      {
+        "ime": "Breaking Bad",
+        "zanr": ["Crime drama", "Thriller", "Serial drama", "Black comedy"],
+        "trajanje": "43-58 minutes",
+        "datum_izlaska": "2008-01-20",
+        "broj_sezona": 5,
+        "broj_epizoda": 62,
+        "godina_zavrsetka": "2013",
+        "status": "Finished",
+        "jezik": "English",
+        "ocjena": "9.5",
+        "glumci": [
+          {
+            "Ime": "Bryan",
+            "Prezime": "Cranston"
+          },
+          {
+            "Ime": "Aaron",
+            "Prezime": "Paul"
+          },
+          {
+            "Ime": "Anna",
+            "Prezime": "Gunn"
+          },
+          {
+            "Ime": "Dean",
+            "Prezime": "Norris"
+          },
+          {
+            "Ime": "Betsy",
+            "Prezime": "Brandt"
+          },
+          {
+            "Ime": "Bob",
+            "Prezime": "Odenkirk"
+          },
+          {
+            "Ime": "Giancarlo",
+            "Prezime": "Esposito"
+          },
+          {
+            "Ime": "Jonathan",
+            "Prezime": "Banks"
+          }
+        ]
+      },
+      {
+        "ime": "Tear Along the Dotted Line",
+        "zanr": ["Adult animation", "Comedy drama"],
+        "trajanje": "16-22 minutes",
+        "datum_izlaska": "2021-11-19",
+        "broj_sezona": 1,
+        "broj_epizoda": 6,
+        "godina_zavrsetka": "2021",
+        "status": "Finished",
+        "jezik": "Italian",
+        "ocjena": "8.6",
+        "glumci": [
+          {
+            "Ime": "Michele",
+            "Prezime": "Rech"
+          },
+          {
+            "Ime": "Valerio",
+            "Prezime": "Mastandrea"
+          },
+          {
+            "Ime": "Paolo",
+            "Prezime": "Vivio"
+          },
+          {
+            "Ime": "Veronica",
+            "Prezime": "Puccio"
+          },
+          {
+            "Ime": "Chiara",
+            "Prezime": "Gioncardi"
+          }
+        ]
+      },
+      {
+        "ime": "Hannibal",
+        "zanr": [
+          "Psychological horror",
+          "Psychological thriller",
+          "Crime drama",
+          "Crime thriller"
+        ],
+        "trajanje": "43 minutes",
+        "datum_izlaska": "2013-04-04",
+        "broj_sezona": 3,
+        "broj_epizoda": 39,
+        "godina_zavrsetka": "2015",
+        "status": "Finished",
+        "jezik": "English",
+        "ocjena": "8.5",
+        "glumci": [
+          {
+            "Ime": "Hugh",
+            "Prezime": "Dancy"
+          },
+          {
+            "Ime": "Mads",
+            "Prezime": "Mikkelsen"
+          },
+          {
+            "Ime": "Caroline",
+            "Prezime": "Dhavernas"
+          },
+          {
+            "Ime": "Laurence",
+            "Prezime": "Fishburne"
+          },
+          {
+            "Ime": "Gillian",
+            "Prezime": "Anderson"
+          },
+          {
+            "Ime": "Raul",
+            "Prezime": "Esparza"
+          }
+        ]
+      },
+      {
+        "ime": "True Detective",
+        "zanr": [
+          "Anthology",
+          "Crime drama",
+          "Detective",
+          "Mystery",
+          "Neo-noir",
+          "Southern Gothic"
+        ],
+        "trajanje": "54-87 minutes",
+        "datum_izlaska": "2014-01-12",
+        "broj_sezona": 3,
+        "broj_epizoda": 24,
+        "godina_zavrsetka": "-",
+        "status": "Ongoing",
+        "jezik": "English",
+        "ocjena": "8.9",
+        "glumci": [
+          {
+            "Ime": "Matthew",
+            "Prezime": "McConaughey"
+          },
+          {
+            "Ime": "Woody",
+            "Prezime": "Harrelson"
+          },
+          {
+            "Ime": "Michelle",
+            "Prezime": "Monaghan"
+          },
+          {
+            "Ime": "Colin",
+            "Prezime": "Farrell"
+          },
+          {
+            "Ime": "Vince",
+            "Prezime": "Vaughn"
+          },
+          {
+            "Ime": "Rachel",
+            "Prezime": "McAdams"
+          },
+          {
+            "Ime": "Taylor",
+            "Prezime": "Kitsch"
+          },
+          {
+            "Ime": "Mahershala",
+            "Prezime": "Ali"
+          },
+          {
+            "Ime": "Stephen",
+            "Prezime": "Dorff"
+          },
+          {
+            "Ime": "Scoot",
+            "Prezime": "McNairy"
+          }
+        ]
+      },
+      {
+        "ime": "Fargo",
+        "zanr": [
+          "Anthology",
+          "Crime drama",
+          "Noir",
+          "Thriller",
+          "Black comedy"
+        ],
+        "trajanje": "39-68 minutes",
+        "datum_izlaska": "2014-04-15",
+        "broj_sezona": 4,
+        "broj_epizoda": 41,
+        "godina_zavrsetka": "-",
+        "status": "Ongoing",
+        "jezik": "English",
+        "ocjena": "8.9",
+        "glumci": [
+          {
+            "Ime": "Billy Bob",
+            "Prezime": "Thornton"
+          },
+          {
+            "Ime": "Martin",
+            "Prezime": "Freeman"
+          },
+          {
+            "Ime": "Patrick",
+            "Prezime": "Wilson"
+          },
+          {
+            "Ime": "Kirsten",
+            "Prezime": "Dunst"
+          },
+          {
+            "Ime": "Jesse",
+            "Prezime": "Plemons"
+          },
+          {
+            "Ime": "Jean",
+            "Prezime": "Smart"
+          },
+          {
+            "Ime": "Ewan",
+            "Prezime": "McGregor"
+          },
+          {
+            "Ime": "Mary Elizabeth",
+            "Prezime": "Winstead"
+          },
+          {
+            "Ime": "Carrie",
+            "Prezime": "Coon"
+          },
+          {
+            "Ime": "David",
+            "Prezime": "Thewlis"
+          },
+          {
+            "Ime": "Chris",
+            "Prezime": "Rock"
+          },
+          {
+            "Ime": "Jason",
+            "Prezime": "Schwartzman"
+          }
+        ]
+      },
+      {
+        "ime": "The Terror",
+        "zanr": ["Drama", "Horror", "Psychological thriller"],
+        "trajanje": "40-56 minutes",
+        "datum_izlaska": "2018-03-25",
+        "broj_sezona": 2,
+        "broj_epizoda": 20,
+        "godina_zavrsetka": "2019",
+        "status": "Finished",
+        "jezik": "English",
+        "ocjena": "7.9",
+        "glumci": [
+          {
+            "Ime": "Jared",
+            "Prezime": "Harris"
+          },
+          {
+            "Ime": "Tobias",
+            "Prezime": "Menzies"
+          },
+          {
+            "Ime": "Ciaran",
+            "Prezime": "Hinds"
+          }
+        ]
+      },
+      {
+        "ime": "The Alienist",
+        "zanr": ["Period drama", "Murder mystery", "Psychological thriller"],
+        "trajanje": "43-55 minutes",
+        "datum_izlaska": "2018-01-21",
+        "broj_sezona": 2,
+        "broj_epizoda": 18,
+        "godina_zavrsetka": "2020",
+        "status": "Finished",
+        "jezik": "English",
+        "ocjena": "7.7",
+        "glumci": [
+          {
+            "Ime": "Daniel",
+            "Prezime": "Brühl"
+          },
+          {
+            "Ime": "Luke",
+            "Prezime": "Evans"
+          },
+          {
+            "Ime": "Dakota",
+            "Prezime": "Fanning"
+          },
+          {
+            "Ime": "Ted",
+            "Prezime": "Levine"
+          }
+        ]
+      },
+      {
+        "ime": "Penny Dreadful",
+        "zanr": [
+          "Drama",
+          "Gothic horror",
+          "Thriller",
+          "Dark fantasy",
+          "Historical fantasy"
+        ],
+        "trajanje": "47-60 minutes",
+        "datum_izlaska": "2014-05-11",
+        "broj_sezona": 3,
+        "broj_epizoda": 27,
+        "godina_zavrsetka": "2016",
+        "status": "Finished",
+        "jezik": "English",
+        "ocjena": "8.2",
+        "glumci": [
+          {
+            "Ime": "Eva",
+            "Prezime": "Green"
+          },
+          {
+            "Ime": "Josh",
+            "Prezime": "Hartnett"
+          },
+          {
+            "Ime": "Rory",
+            "Prezime": "Kinnear"
+          },
+          {
+            "Ime": "Harry",
+            "Prezime": "Treadaway"
+          },
+          {
+            "Ime": "Billie",
+            "Prezime": "Piper"
+          },
+          {
+            "Ime": "Timothy",
+            "Prezime": "Dalton"
+          }
+        ]
+      },
+      {
+        "ime": "Narcos",
+        "zanr": ["Crime drama", "Biographical"],
+        "trajanje": "43-60 minutes",
+        "datum_izlaska": "2015-08-28",
+        "broj_sezona": 3,
+        "broj_epizoda": 30,
+        "godina_zavrsetka": "2017",
+        "status": "Finished",
+        "jezik": "Spanish",
+        "ocjena": "8.8",
+        "glumci": [
+          {
+            "Ime": "Wagner",
+            "Prezime": "Moura"
+          },
+          {
+            "Ime": "Boyd",
+            "Prezime": "Holbrook"
+          },
+          {
+            "Ime": "Pedro",
+            "Prezime": "Pascal"
+          },
+          {
+            "Ime": "Damian",
+            "Prezime": "Alcazar"
+          },
+          {
+            "Ime": "Alberto",
+            "Prezime": "Ammann"
+          }
+        ]
+      },
+      {
+        "ime": "Daredevil",
+        "zanr": ["Crime drama", "Action", "Legal drama", "Superhero"],
+        "trajanje": "46-61 minutes",
+        "datum_izlaska": "2015-04-10",
+        "broj_sezona": 3,
+        "broj_epizoda": 39,
+        "godina_zavrsetka": "2018",
+        "status": "Finished",
+        "jezik": "English",
+        "ocjena": "8.6",
+        "glumci": [
+          {
+            "Ime": "Charlie",
+            "Prezime": "Cox"
+          },
+          {
+            "Ime": "Deborah Ann",
+            "Prezime": "Woll"
+          },
+          {
+            "Ime": "Vincent",
+            "Prezime": "D Onofrio"
+          },
+          {
+            "Ime": "Elden",
+            "Prezime": "Henson"
+          },
+          {
+            "Ime": "Rosario",
+            "Prezime": "Dawson"
+          }
+        ]
+      },
+      {
+        "ime": "Sherlock",
+        "zanr": ["Crime", "Mystery", "Comedy drama"],
+        "trajanje": "85-90 minutes",
+        "datum_izlaska": "2010-07-25",
+        "broj_sezona": 4,
+        "broj_epizoda": 13,
+        "godina_zavrsetka": "2017",
+        "status": "Finished",
+        "jezik": "English",
+        "ocjena": "9.1",
+        "glumci": [
+          {
+            "Ime": "Benedict",
+            "Prezime": "Cumberbatch"
+          },
+          {
+            "Ime": "Mark",
+            "Prezime": "Gatiss"
+          },
+          {
+            "Ime": "Una",
+            "Prezime": "Stubbs"
+          },
+          {
+            "Ime": "Andrew",
+            "Prezime": "Scott"
+          },
+          {
+            "Ime": "Martin",
+            "Prezime": "Freeman"
+          }
+        ]
+      }
+    ]
+  ]
+}
