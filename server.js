@@ -10,4 +10,8 @@ const home = require("./routes/index");
 app.use(express.urlencoded({ extended: true }));
 app.use("/", home);
 
-app.listen(3000);
+app.get("/hello", (req, res) => res.sendFile(__dirname + "/index.html"));
+
+app.listen(3000, function () {
+  console.log("listening on 3000");
+});

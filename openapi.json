@@ -1,0 +1,308 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Moje-serije-1",
+    "description": "REST API za serije",
+    "version": "1.0.0",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "lovro.katic@fer.hr"
+    },
+    "license": {
+      "name": "Creative Commons Attribution 4.0 International License"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/api/v1/language/Italian": {
+      "get": {
+        "description": "Fetches all series with chosen language",
+        "responses": {
+          "200": {
+            "description": "Fetched series with given language",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:3000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:3000"
+        }
+      ]
+    },
+    "/api/v1/actor": {
+      "post": {
+        "description": "Creates a new actor in datbase",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1_actor_body"
+              },
+              "examples": {
+                "0": {
+                  "value": "{\n    \"ime\": \"Prob1\",\n    \"prezime\": \"Prob2\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actor added",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:3000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:3000"
+        }
+      ]
+    },
+    "/api/v1/actors": {
+      "get": {
+        "description": "Fetches all actors",
+        "responses": {
+          "200": {
+            "description": "Fetched actors"
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:3000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:3000"
+        }
+      ]
+    },
+    "/api/v1/collection": {
+      "get": {
+        "description": "Fetches the collection",
+        "responses": {
+          "200": {
+            "description": "Fetched collection"
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:3000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:3000"
+        }
+      ]
+    },
+    "/api/v1/series": {
+      "get": {
+        "description": "Fetches all series",
+        "responses": {
+          "200": {
+            "description": "Fetched series",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:3000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:3000"
+        }
+      ]
+    },
+    "/api/v1/series/5": {
+      "get": {
+        "description": "Fetches a specific series",
+        "responses": {
+          "200": {
+            "description": "Fetched a series with given id",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:3000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:3000"
+        }
+      ]
+    },
+    "/api/v1/status/Finished": {
+      "get": {
+        "description": "Fetches series with status",
+        "responses": {
+          "200": {
+            "description": "Fetched series with given status",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:3000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:3000"
+        }
+      ]
+    },
+    "/api/v1/actor/88": {
+      "put": {
+        "description": "Updates actor with given id",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/actor_88_body"
+              },
+              "examples": {
+                "0": {
+                  "value": "{\n    \"ime\": \"Upd1\",\n    \"prezime\": \"Upd2\"\n}"
+                },
+                "1": {
+                  "value": "{\n    \"ime\": \"Upd1\",\n    \"prezime\": \"Upd2\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated actor",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:3000"
+          }
+        ]
+      },
+      "delete": {
+        "description": "Deletes actor with given id",
+        "responses": {
+          "200": {
+            "description": "Deleted actor",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:3000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:3000"
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {
+      "v1_actor_body": {
+        "type": "object",
+        "properties": {
+          "ime": {
+            "type": "string"
+          },
+          "prezime": {
+            "type": "string"
+          }
+        }
+      },
+      "actor_88_body": {
+        "type": "object",
+        "properties": {
+          "ime": {
+            "type": "string"
+          },
+          "prezime": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
