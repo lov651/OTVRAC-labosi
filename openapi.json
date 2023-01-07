@@ -1,5 +1,10 @@
 {
   "openapi": "3.0.1",
+  "@context": {
+    "@vocab": "http://schema.org/",
+    "ime": "givenName",
+    "prezime": "familyName"
+  },
   "info": {
     "title": "Moje-serije-1",
     "description": "REST API za serije",
@@ -282,6 +287,11 @@
   "components": {
     "schemas": {
       "v1_actor_body": {
+        "@context": {
+          "@vocab": "http://schema.org/",
+          "ime": "givenName",
+          "prezime": "familyName"
+        },
         "type": "object",
         "properties": {
           "ime": {
@@ -293,6 +303,11 @@
         }
       },
       "actor_88_body": {
+        "@context": {
+          "@vocab": "http://schema.org/",
+          "ime": "givenName",
+          "prezime": "familyName"
+        },
         "type": "object",
         "properties": {
           "ime": {

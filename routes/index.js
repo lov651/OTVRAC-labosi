@@ -1,14 +1,18 @@
 const express = require("express");
 const db = require("../db");
+const fs = require("fs");
 
 const router = new express.Router();
-const path = require("path");
+const { requiresAuth } = require("express-openid-connect");
+
+// AUTENTIFIKACIJA
+
+// KRAJ AUTENTIFIKACIJA
 
 // Tu imam nešto
 // Počinje ovdje
 // =========================
 
-var hateoasLinker = require("express-hateoas-links");
 var bodyParser = require("body-parser");
 var cors = require("cors");
 router.use(cors());
@@ -34,8 +38,6 @@ router
     })
   )
   .use(bodyParser.json());
-
-router.use(hateoasLinker);
 
 router.get("/api/v1/openapi", async function (req, res, next) {
   res.sendFile("D:/a_OTVORENO_RACUNARSTVO/OTVRAC-labosi/openapi.json");
@@ -395,7 +397,89 @@ router.get("/", async (req, res) => {
   }
   res.render("index", {
     series: series.rows,
+    isLoggedIn: req.oidc.isAuthenticated() ? true : false,
   });
+});
+
+router.get("/osvjezi", async (req, res) => {
+  if (req.oidc.isAuthenticated()) {
+    console.log("MOGU");
+    const [series, actors, connect] = await Promise.all([
+      db.query("SELECT * FROM serija"),
+      db.query("SELECT * FROM glumac"),
+      db.query("SELECT * FROM glumac_serija"),
+    ]);
+
+    for (s of series.rows) {
+      var dateData = s.datum_izlaska.toString().split(" ");
+      s.datum_izlaska = dateData[1] + " " + dateData[2] + " " + dateData[3];
+      s.glumci = [];
+      for (c of connect.rows) {
+        if (s.id_serije === c.id_serije) {
+          for (a of actors.rows) {
+            if (c.id_glumca === a.id_glumca) {
+              s.glumci.push({ Ime: a.ime, Prezime: a.prezime });
+            }
+          }
+        }
+      }
+    }
+
+    const data = JSON.parse(JSON.stringify(series.rows));
+    const insert = JSON.stringify(data);
+
+    fs.unlinkSync(__dirname.slice(0, -7) + "\\serije.json");
+    fs.writeFileSync(__dirname.slice(0, -7) + "\\serije.json", insert);
+    const file_content = fs
+      .readFileSync(__dirname.slice(0, -7) + "\\serije.json")
+      .toString();
+
+    let csvContent =
+      "Title,Genre,Release date,No. of seasons,No. of episodes,Status,Last aired,Duration,Original language,Rating,Actor\n" +
+      data
+        .map(function (e) {
+          var returnCSV = "";
+          var csvPart =
+            e.ime +
+            ",{" +
+            e.zanr.join(" ") +
+            "}," +
+            e.datum_izlaska +
+            "," +
+            e.broj_sezona +
+            "," +
+            e.broj_epizoda +
+            "," +
+            e.status +
+            "," +
+            e.godina_zavrsetka +
+            "," +
+            e.trajanje +
+            "," +
+            e.jezik +
+            "," +
+            e.ocjena +
+            ",";
+          for (g of e.glumci) {
+            returnCSV += csvPart + g.Ime + "," + g.Prezime + "\n";
+          }
+          return returnCSV;
+        })
+        .join("");
+
+    fs.unlinkSync(__dirname.slice(0, -7) + "\\serije.csv");
+    fs.writeFileSync(__dirname.slice(0, -7) + "\\serije.csv", csvContent);
+    const file_content2 = fs
+      .readFileSync(__dirname.slice(0, -7) + "\\serije.csv")
+      .toString();
+
+    res.render("index", {
+      series: series.rows,
+      isLoggedIn: req.oidc.isAuthenticated() ? true : false,
+    });
+  } else {
+    res.redirect("/error");
+  }
 });
 
 router.get("/serije", async (req, res) => {

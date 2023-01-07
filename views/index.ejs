@@ -29,6 +29,29 @@
     <title>Home</title>
   </head>
   <body>
+    <% if (!isLoggedIn) { %>
+    <div style="margin: 1rem">
+      <a href="/login"
+        ><button style="padding: 0.5rem; font-size: 1.25rem">Prijava</button></a
+      >
+    </div>
+    <% } else { %>
+    <div style="margin: 1rem">
+      <a href="/profile" style="padding-right: 1rem"
+        ><button style="padding: 0.5rem; font-size: 1.25rem">
+          Korisnički profil
+        </button></a
+      >
+      <a href="/osvjezi" style="padding-right: 1rem"
+        ><button style="padding: 0.5rem; font-size: 1.25rem">
+          Osvježi prikaz
+        </button></a
+      >
+      <a href="/logout"
+        ><button style="padding: 0.5rem; font-size: 1.25rem">Odjava</button></a
+      >
+    </div>
+    <% } %>
     <h1 style="padding: 1rem">Dobrodošli u TV series aplikaciju</h1>
     <h2 style="padding: 0.5rem">Opis aplikacije:</h2>
     <p style="width: 600px; padding: 0.5rem 0; text-align: center">
@@ -90,78 +113,16 @@
       <a href="/serije" style="text-decoration: none"><h3>View series</h3></a>
     </div>
     <div style="margin: 1rem">
-      <a href="javascript:vratiCSV()" style="padding-right: 1rem"
+      <a href="/csv" style="padding-right: 1rem"
         ><button style="padding: 0.5rem; font-size: 1.25rem">
           Download all series in CSV format
         </button></a
       >
-      <a href="javascript:vratiJSON()"
+      <a href="/json" style="padding-right: 1rem"
         ><button style="padding: 0.5rem; font-size: 1.25rem">
           Download all series in JSON format
         </button></a
       >
     </div>
   </body>
-  <% if (series) { %>
-  <script type="text/javascript">
-    function vratiCSV() {
-      var currentData = JSON.parse(`<%- JSON.stringify(series) %>`);
-
-      let csvContent =
-        "Title,Genre,Release date,No. of seasons,No. of episodes,Status,Last aired,Duration,Original language,Rating,Actor\n" +
-        currentData
-          .map(function (e) {
-            var returnCSV = "";
-            var csvPart =
-              e.ime +
-              ",{" +
-              e.zanr.join(" ") +
-              "}," +
-              e.datum_izlaska +
-              "," +
-              e.broj_sezona +
-              "," +
-              e.broj_epizoda +
-              "," +
-              e.status +
-              "," +
-              e.godina_zavrsetka +
-              "," +
-              e.trajanje +
-              "," +
-              e.jezik +
-              "," +
-              e.ocjena +
-              ",";
-            for (g of e.glumci) {
-              returnCSV += csvPart + g + "\n";
-            }
-            return returnCSV;
-          })
-          .join("");
-      // console.log("EVOGA");
-      // console.log(csvContent);
-      var hiddenElement = document.createElement("a");
-      hiddenElement.href =
-        "data:text/csv;charset=utf-8," + encodeURI(csvContent);
-      hiddenElement.target = "_blank";
-
-      hiddenElement.download = "serije.csv";
-      hiddenElement.click();
-    }
-    function vratiJSON() {
-      var currentData = JSON.parse(`<%- JSON.stringify(series) %>`);
-      // console.log("DATA JE");
-      // console.log(currentData);
-      var hiddenElement = document.createElement("a");
-      hiddenElement.href =
-        "data:text/json;charset=utf-8," +
-        encodeURIComponent(JSON.stringify(currentData));
-      hiddenElement.target = "_blank";
-
-      hiddenElement.download = "serije.json";
-      hiddenElement.click();
-    }
-  </script>
-  <% } %>
 </html>
